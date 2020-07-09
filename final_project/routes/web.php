@@ -16,3 +16,20 @@ Route::get('/', function () {
 });
 
 Route::resource('pertanyaan', 'PertanyaanController');
+
+//Route Coba FrontEND FInal Project
+Route::get('/', function (){
+    return view('page.daftarpertanyaan');
+});
+
+Route::get('/create', function (){
+    return view('page.buatpertanyaan');
+});
+
+Route::get('/jawab', function (){
+    return view('page.tanyajawab');
+});
+
+Route::get('/editpertanyaan', function (){
+    return view('page.editpertanyaan');
+});
