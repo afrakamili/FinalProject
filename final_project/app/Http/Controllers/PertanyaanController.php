@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Pertanyaan;
+use App\Tag;
 
 class PertanyaanController extends Controller
 {
@@ -36,10 +37,14 @@ class PertanyaanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
         $new_pertanyaan = Pertanyaan::create([
             "judul" => $request["judul"],
             "isi" => $request ["isi"]
+        ]);
+        dd ($new_pertanyaan);
+        $new_tag = Tag::create([
+            "tag_name" => $request ["tag_name"]
         ]);
         return redirect('/pertanyaan');
     }
