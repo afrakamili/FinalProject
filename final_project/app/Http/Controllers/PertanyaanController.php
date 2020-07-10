@@ -19,7 +19,7 @@ class PertanyaanController extends Controller
     {
         //$pertanyaan = Pertanyaan::find($id);
         $pertanyaan = Pertanyaan::all();
-        
+        //dd($pertanyaan);
         return view('page.daftarpertanyaan', compact('pertanyaan'));
     }
 
@@ -46,6 +46,7 @@ class PertanyaanController extends Controller
         $new_pertanyaan = Pertanyaan::create([
             "judul"=> $request["judul"],
             "isi"=> $request ["isi"],
+            "id_penanya"=>$request["id_penanya"],
 
         ]);
         //tags

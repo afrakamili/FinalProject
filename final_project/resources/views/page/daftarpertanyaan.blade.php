@@ -30,10 +30,10 @@
                     <div class="card-body">
                     <p class="intro" >{{$pertanyaan->isi}}</p>
                         <a class="link" href="#"><span></span></a>
-                        <span>Diajukan oleh Maulaya</span>
+                        <span>Diajukan oleh {{ $pertanyaan->id_penanya }}</span>
                     </div>
                     <div class="card-footer bg-transparent">
-                        Dipost 9 Juli 2020 16:00
+                       Dibuat : {{$pertanyaan->created_at}}
                     <div class="btn-group-sm"> 
                         <a class="btn-orange" href="{{url('/jawaban/'.$pertanyaan->id)}}" data-size="large" >Lihat</a>
                         <a class="btn-orange" href="{{url('/pertanyaan/'.$pertanyaan->id) . '/edit' }}" data-size="large" >Edit</a> </div> 
