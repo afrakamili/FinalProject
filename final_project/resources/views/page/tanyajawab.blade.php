@@ -6,8 +6,10 @@
    
     <div class="container">
          
-        <section id="general" class="doc-section text-left">
-            <h2 class="section-title">Pertanyaan</h2>
+        <section class="doc-section text-left">
+            <h2 class="section-title">Pertanyaan
+            </h2>
+           
             <div class="section-block">
                 <h3 class="question text"><i class="fas fa-question-circle"></i> {{$pertanyaan->isi}}</h3>
                 <div class="answer"> ditanyakan oleh: </div>
@@ -22,6 +24,7 @@
                     <input hidden name="created_at" value="{{ \Carbon\Carbon::now() }}">
                     <input hidden name="updated_at" value="{{ \Carbon\Carbon::now() }}">
                  </form>
+                </div>
             </div>
             @foreach ($jawaban as $jawaban)
                 <div class="section-block"> 
