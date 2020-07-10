@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Pertanyaan;
+use App\Tag;
+use App\User2;
+use App\Models\UserModel;
 
 class PertanyaanController extends Controller
 {
@@ -36,11 +39,22 @@ class PertanyaanController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        $new_pertanyaan = Pertanyaan::create([
-            "judul" => $request["judul"],
-            "isi" => $request ["isi"]
-        ]);
+        $user = UserModel::update($request->id_penanya);
+        dd ($user);
+
+        $tagArr = explode(',', $request->tags);
+        
+        $tagsMulti = [];
+        foreach($tagArr as $strTag){
+            $tagArrAssc["tag_name"] = $strTag;
+            $tagsMulti[] = $tagArrAssc;
+        }
+        
+        foreach($tagsMulti as $tagCheck){
+            $tag = Tag::firstOrCreate($tagCheck);
+            $new_pertanyaan->tags()->attach($tag->id);
+        }
+        
         return redirect('/pertanyaan');
     }
 

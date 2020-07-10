@@ -16,8 +16,8 @@ class CreateJawabansTable extends Migration
         Schema::create('jawabans', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->text('jawaban');
-            $table->integer('votes')->nullable;
-            $table->boolean('jawaban_terbaik')->nullable;
+            $table->integer('votes')->nullable();
+            $table->boolean('jawaban_terbaik')->nullable();
 
             $table->bigInteger('id_pertanyaan')->unsigned()->nullable();
             $table->foreign('id_pertanyaan')->references ('id')->on ('pertanyaans') ->onDelete ('cascade');

@@ -17,7 +17,7 @@ class CreatePertanyaansTable extends Migration
             $table->bigIncrements('id');
             $table->string('judul');
             $table->text('isi');
-            $table->integer('votes')->nullable;
+            $table->integer('votes')->nullable();
             $table->bigInteger('id_penanya')->unsigned()->nullable();
             $table->foreign('id_penanya')->references ('id')->on('users')->onDelete('cascade');
             $table->timestamps();

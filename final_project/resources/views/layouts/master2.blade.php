@@ -35,6 +35,7 @@
         <!-- ******Header****** -->
         @include('layouts.partial.head')
         <!--//header-->
+        
         @yield('content')
         
     </div><!--//page-wrapper-->
