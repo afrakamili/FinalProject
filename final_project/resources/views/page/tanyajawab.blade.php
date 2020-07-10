@@ -28,7 +28,17 @@
                     <h2 class="question text"><i class=""></i> Jawaban</h2>
                     <div class="answer">{{$jawaban->jawaban}}</div>
                     <div class="section-title"></div>
-                    <div class="answer">dijawab oleh </div>
+                    <div class="answer">dijawab oleh: $user->nama</div>
+                    <div>
+                        <form action="/komentar/create" method="POST">
+                            @csrf
+                            <input type="text" class="form-control" style="width:200px">
+                            <button class="btn btn-primary" style="padding:4px display:inline" > Komentar Jawaban </button>
+
+                        </form>
+                    </div>
+                    
+                    
                 </div>
             @endforeach
             
