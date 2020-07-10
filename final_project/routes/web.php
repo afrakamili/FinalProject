@@ -12,23 +12,27 @@
 */
 
 Route::get('/', function () {
-    return view('layouts.master2');
+    return view('welcome');
 });
+
 
 Route::resource('pertanyaan', 'PertanyaanController');
+Route::get('/jawaban/{id_pertanyaan}', 'JawabanController@index');
+Route::post('/jawaban', 'JawabanController@store');
 
+//Route::get('/listjawaban/{id_pertanyaan}', 'JawabanController@index');
 //Route Coba FrontEND FInal Project
-Route::get('/', function (){
-    return view('page.daftarpertanyaan');
-});
+// Route::get('/', function (){
+//     return view('page.daftarpertanyaan');
+// });
 
-Route::get('/create', function (){
-    return view('page.buatpertanyaan');
-});
+// Route::get('/create', function (){
+//     return view('page.buatpertanyaan');
+// });
 
-Route::get('/jawab', function (){
-    return view('page.tanyajawab');
-});
+// Route::get('/jawab', function (){
+//     return view('page.tanyajawab');
+// });
 
 Route::get('/editpertanyaan', function (){
     return view('page.editpertanyaan');
@@ -38,6 +42,6 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
-    \UniSharp\LaravelFilemanager\Lfm::routes();
-});
+// Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
+//     \UniSharp\LaravelFilemanager\Lfm::routes();
+// });

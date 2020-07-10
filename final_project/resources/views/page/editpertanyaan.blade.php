@@ -9,17 +9,17 @@
       <h3 class="card-title">EDIT PERTANYAAN</h3>
     </div>
     
-     <form action="{{ url('/#') }}" method="POST">
+     <form action="/pertanyaan/{{$pertanyaan->id}}" method="POST">
           @csrf
           @method('PUT')
           <div class="card-body bg-light">
               <div class="form-group">
                 <label >Judul Pertanyaan</label>
-                <input type="text" class="form-control" name="judul" placeholder=" Judul" value="">
+              <input type="text" class="form-control" name="judul" placeholder=" Judul" value="{{$pertanyaan->judul}}">
               </div>
               <div class="form-group">
                 <label >Isi Pertanyaan</label>
-                <textarea class="form-control" rows="5" name="isi" placeholder="Mo nanya donk ..."></textarea>
+                <textarea class="form-control" rows="5" name="isi" placeholder="{{$pertanyaan->isi}}" ></textarea>
               </div>
               
                 <div class="form-group">

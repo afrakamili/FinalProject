@@ -17,8 +17,10 @@ class PertanyaanController extends Controller
      */
     public function index()
     {
+        //$pertanyaan = Pertanyaan::find($id);
         $pertanyaan = Pertanyaan::all();
-        return view('pertanyaan.index', compact('pertanyaan'));
+        
+        return view('page.daftarpertanyaan', compact('pertanyaan'));
     }
 
     /**
@@ -28,7 +30,7 @@ class PertanyaanController extends Controller
      */
     public function create()
     {
-        return view('pertanyaan.form');
+        return view('page.buatpertanyaan');
     }
 
     /**
@@ -39,11 +41,15 @@ class PertanyaanController extends Controller
      */
     public function store(Request $request)
     {
-        $user = UserModel::update($request->id_penanya);
-        dd ($user);
+        //update reputasi user
+        // $user = UserModel::update($request->id_penanya);
+        $new_pertanyaan = Pertanyaan::create([
+            "judul"=> $request["judul"],
+            "isi"=> $request ["isi"],
 
-        $tagArr = explode(',', $request->tags);
-        
+        ]);
+        //tags
+        $tagArr = explode(',', $request->tag);
         $tagsMulti = [];
         foreach($tagArr as $strTag){
             $tagArrAssc["tag_name"] = $strTag;
@@ -54,6 +60,8 @@ class PertanyaanController extends Controller
             $tag = Tag::firstOrCreate($tagCheck);
             $new_pertanyaan->tags()->attach($tag->id);
         }
+        
+        //pertanyaan
         
         return redirect('/pertanyaan');
     }
@@ -77,8 +85,8 @@ class PertanyaanController extends Controller
      */
     public function edit($id)
     {
-        $pertanyaans = Pertanyaan::all();
-        return view('forum.pertanyaan.edit', compact('pertanyaans'));
+        $pertanyaan = Pertanyaan::find($id);
+        return view('page.editpertanyaan', compact('pertanyaan'));
     }
 
     /**
@@ -90,7 +98,8 @@ class PertanyaanController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $pertanyaan = PertanyaanModel::update($id, $request->all());
+        return redirect('/pertanyaan');
     }
 
     /**
@@ -101,6 +110,7 @@ class PertanyaanController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $deleted = Pertanyaan::where('id', $id)->delete();
+        return redirect('/pertanyaan');
     }
 }

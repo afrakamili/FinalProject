@@ -9,4 +9,5 @@ class Jawaban extends Model
     public function pertanyaan(){
         return $this->belongsTo('App\Pertanyaan');
     }
+    protected $guarded=[];
 }
