@@ -16,8 +16,8 @@ Route::get('/', function () {
 });
 
 
-Route::resource('pertanyaan', 'PertanyaanController');
-Route::get('/jawaban/{id_pertanyaan}', 'JawabanController@index');
+Route::resource('pertanyaan', 'PertanyaanController')->middleware('auth');
+Route::get('/jawaban/{id_pertanyaan}', 'JawabanController@index')->middleware('auth');
 Route::post('/jawaban', 'JawabanController@store');
 
 //Route::get('/listjawaban/{id_pertanyaan}', 'JawabanController@index');
@@ -36,7 +36,7 @@ Route::post('/jawaban', 'JawabanController@store');
 
 Route::get('/editpertanyaan', function (){
     return view('page.editpertanyaan');
-});
+})->middleware('auth');
 
 Auth::routes();
 
