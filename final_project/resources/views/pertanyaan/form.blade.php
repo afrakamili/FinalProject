@@ -19,9 +19,14 @@
         <input type="text" class="form-control" id="isi" name="isi" placeholder="masukkan isi pertanyaan">
       </div>
       <div class="form-group">
-        <label for="tag">Tag Pertanyaan</label>
-        <input type="text" class="form-control" id="tag" name="tag" placeholder="tagnya mau apa">
+        <label for="tags">Tag Pertanyaan</label>
+        <input type="text" class="form-control" id="tags" name="tags" placeholder="tagnya mau apa">
       </div>
+      <div class="form-group">
+        <label for="id_penanya">Id penanya</label>
+        <input type="text" class="form-control" id="id_penanya" name="id_penanya" placeholder="masukkan idmu">
+      </div>
+      
       
       
     </div>
