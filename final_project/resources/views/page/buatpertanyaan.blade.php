@@ -9,7 +9,7 @@
       <h3 class="card-title">FORM BERTANYA</h3>
     </div>
     
-     <form action="{{ url('/#') }}" method="POST">
+     <form action="/pertanyaan" method="POST">
           @csrf
           <div class="card-body bg-light">
               <div class="form-group">
@@ -17,7 +17,7 @@
                 <input type="text" class="form-control" name="judul" placeholder=" Judul">
               </div>
               <div class="form-group">
-                <label >Isi Pertanyaan</label>
+                <label>Isi Pertanyaan</label>
                 <textarea class="form-control" rows="5" name="isi" placeholder="Mo nanya donk ..."></textarea>
               </div>
               
@@ -27,14 +27,13 @@
                 </div>
               
               <input hidden name="id_penulis" value=1>
-              <input hidden name="created_at" value="{{ \Carbon\Carbon::now() }}">
-              <input hidden name="updated_at" value="{{ \Carbon\Carbon::now() }}">
-            </div>
+              
+          </div>
             <div class="card-footer">
               <button type="submit" class="btn btn-primary">Submit</button>
             </div>
           
-          </form>
+      </form>
 </div>
 <br>
 </div>

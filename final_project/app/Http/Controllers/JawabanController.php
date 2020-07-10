@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\JawabanModel;
+use App\Jawaban;
+use App\Pertanyaan;
 
 class JawabanController extends Controller
 {
@@ -11,9 +14,15 @@ class JawabanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
-        //
+        $jawaban = JawabanModel::find_by_pertanyaan_id($id);
+        $pertanyaan = Pertanyaan::find($id);
+        
+
+        //$pertanyaan = Pertanyaan::find($id);
+        
+        return view('page.tanyajawab', compact('jawaban', 'pertanyaan'));
     }
 
     /**
@@ -21,9 +30,9 @@ class JawabanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        //
+        
     }
 
     /**
@@ -34,7 +43,11 @@ class JawabanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $new_jawaban = Jawaban::create([
+            "jawaban"=> $request ["jawaban"],
+            "id_pertanyaan" => $request ["id_pertanyaan"],
+        ]);
+        return redirect('/pertanyaan');
     }
 
     /**
