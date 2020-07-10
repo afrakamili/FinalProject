@@ -19,6 +19,7 @@ class PertanyaanController extends Controller
     {
         //$pertanyaan = Pertanyaan::find($id);
         $pertanyaan = Pertanyaan::all();
+        
         return view('page.daftarpertanyaan', compact('pertanyaan'));
     }
 
@@ -42,26 +43,26 @@ class PertanyaanController extends Controller
     {
         //update reputasi user
         // $user = UserModel::update($request->id_penanya);
-
-        // //tags
-        // $tagArr = explode(',', $request->tags);
-        // $tagsMulti = [];
-        // foreach($tagArr as $strTag){
-        //     $tagArrAssc["tag_name"] = $strTag;
-        //     $tagsMulti[] = $tagArrAssc;
-        // }
-        
-        // foreach($tagsMulti as $tagCheck){
-        //     $tag = Tag::firstOrCreate($tagCheck);
-        //     $new_pertanyaan->tags()->attach($tag->id);
-        // }
-        
-        //pertanyaan
         $new_pertanyaan = Pertanyaan::create([
             "judul"=> $request["judul"],
             "isi"=> $request ["isi"],
 
         ]);
+        //tags
+        $tagArr = explode(',', $request->tag);
+        $tagsMulti = [];
+        foreach($tagArr as $strTag){
+            $tagArrAssc["tag_name"] = $strTag;
+            $tagsMulti[] = $tagArrAssc;
+        }
+        
+        foreach($tagsMulti as $tagCheck){
+            $tag = Tag::firstOrCreate($tagCheck);
+            $new_pertanyaan->tags()->attach($tag->id);
+        }
+        
+        //pertanyaan
+        
         return redirect('/pertanyaan');
     }
 

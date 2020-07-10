@@ -17,7 +17,7 @@
         <div class="intro">
             <p>Silahkan menjawab, karena jawaban anda mungkin solusi buat orang lain</p>
             <div class="cta-container">
-            <a class="btn btn-primary btn-cta" href="{{url('/create')}}" target="_blank"> Silahkan Bertanya</a>
+            <a class="btn btn-primary btn-cta" href="/pertanyaan/create" target="_blank"> Silahkan Bertanya</a>
             </div><!--//cta-container-->
         </div><!--//intro-->
         <div id="cards-wrapper" class="cards-wrapper row">
@@ -37,12 +37,16 @@
                     <div class="btn-group-sm"> 
                         <a class="btn-orange" href="{{url('/jawaban/'.$pertanyaan->id)}}" data-size="large" >Lihat</a>
                         <a class="btn-orange" href="{{url('/pertanyaan/'.$pertanyaan->id) . '/edit' }}" data-size="large" >Edit</a> </div> 
+                        <form action="{{url('/pertanyaan/'. $pertanyaan->id)}}" style="display:inline" method="post">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+                        </form>
                     </div>
-                    <form action="{{url('/pertanyaan/'. $pertanyaan->id)}}" style="" method="post">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
-                    </form>
+                    
+                    @foreach ($pertanyaan->tags as $tag)
+                         <button class="btn btn-primary btn-sm">{{$tag->tag_name}}</button>
+                    @endforeach
                     
                 </div>
 

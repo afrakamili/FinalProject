@@ -23,7 +23,7 @@
               
                 <div class="form-group">
                   <label for="exampleInputEmail1">#Tag</label>
-                  <input type="text" class="form-control" name="tag">
+                  <input type="text" class="form-control" name="tag" placeholder="Contoh: tag1, tag2, tag3">
                 </div>
               
               <input hidden name="id_penulis" value=1>
