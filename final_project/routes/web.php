@@ -33,3 +33,11 @@ Route::get('/jawab', function (){
 Route::get('/editpertanyaan', function (){
     return view('page.editpertanyaan');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
+    \UniSharp\LaravelFilemanager\Lfm::routes();
+});
