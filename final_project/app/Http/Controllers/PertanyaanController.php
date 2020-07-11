@@ -9,6 +9,7 @@ use App\User2;
 use App\Models\UserModel;
 use App\Jawaban;
 use App\Models\JawabanModel;
+use App\Models\PertanyaanModel;
 
 class PertanyaanController extends Controller
 {

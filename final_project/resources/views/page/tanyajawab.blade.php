@@ -35,8 +35,11 @@
                 <br>
                 <h2 class="section-title"></h2>
                 <span class="bg-secondary text-white-50">{{$pertanyaan->created_at}}</span>
-
-                <div class="answer mb-3">
+                <br>
+                <div class="answer text-left badge-secondary text-white">
+                    <p><i class=" fas fa-comment inline-block"></i>komentar disini. bla bla bla </p>
+                </div><!--//coment-->
+                <div class="answer mb-3 mt-3">
                 
                 <form method="POST" action="{{url('/jawaban')}}">
                     @csrf
@@ -70,13 +73,11 @@
                     <br>
                     <h2 class="section-title"></h2>
                     <span class="bg-info text-white-50">{{$jawaban->created_at}}</span>
-                </div>
-                @endforeach
-                    
-            </div>    
-            
-            
-            
+                    <br>
+                    <div class="answer text-right badge-secondary text-white">
+                        <p>komentar disini. bla bla bla <i class=" fas fa-comment inline-block"></i></p>
+                    </div><!--//coment-->
+                @endforeach            
             <!--//section-block-->
         </section><!--//doc-section-->
         
