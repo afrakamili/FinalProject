@@ -70,9 +70,9 @@
                     <br>
                     <h2 class="section-title"></h2>
                     <span class="bg-info text-white-50">{{$jawaban->created_at}}</span>
-                </div>
+                
                 @endforeach
-                    
+            </div>  
             </div>    
             
             
