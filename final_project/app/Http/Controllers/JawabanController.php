@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\JawabanModel;
+use App\Models\UserModel;
 use App\Jawaban;
 use App\Pertanyaan;
 use App\User2;
@@ -46,9 +47,13 @@ class JawabanController extends Controller
      */
     public function store(Request $request)
     {
+        //update reputasi
+        $id = $request->id_penjawab;
+        $update_reputasi = UserModel::update_reputasi2($id);
         $new_jawaban = Jawaban::create([
             "jawaban"=> $request ["jawaban"],
             "id_pertanyaan" => $request ["id_pertanyaan"],
+            "id_penjawab" => $request ["id_penjawab"],
         ]);
         return redirect('/pertanyaan');
     }

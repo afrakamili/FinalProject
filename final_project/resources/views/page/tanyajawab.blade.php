@@ -12,14 +12,30 @@
            
             <div class="section-block">
                 <h3 class="question text"><i class="fas fa-question-circle"></i> {{$pertanyaan->isi}}</h3>
-                <div class="answer"> ditanyakan oleh: </div>
+                <div class="answer mb-3"> 
+                    <ul class="list-inline float-left px-2">
+                        <li class="list-inline-item"><a href="#" class="text-secondary"><i class="fa fa-user"></i> oleh: {{$pertanyaan-> user -> name}}</a></li>
+                        <li class="list-inline-item"><a href="#" class="text-secondary"><i class="fa fa-comment"></i> beri komentar</a></li>
+                    </ul>
+                                            
+                    <ul class="list-inline float-right px-2">
+                        <li class="list-inline-item">Vote :{{$pertanyaan->votes}} </a></li>
+                        <li class="list-inline-item"><a href="#" class="text-secondary"><i class="fa fa-thumbs-up"></i> vote up</a></li>
+                        <li class="list-inline-item"><a href="#" class="text-secondary"><i class="fa fa-thumbs-down"></i> vote down</a></li>
+                     </ul>
+                </div>
+                <br>
+                <h2 class="section-title"></h2>
+                <span class="bg-secondary text-white-50">{{$pertanyaan->created_at}}</span>
+
+                <div class="answer mb-3">
                 
                 <form method="POST" action="{{url('/jawaban')}}">
                     @csrf
                     <div class="answer text-right"> <button class="btn btn-danger btn-cta" type="submit"> Bantu Jawab</button></div>
                     <div class="section-title"></div>
                     <textarea class="form-control" rows="5" name="jawaban" placeholder="Enter ..."></textarea>
-                    <input hidden name="id_penjawab" value=1 >
+                    <input hidden name="id_penjawab" value={{ Auth::user()->id }}>
                     <input hidden name="id_pertanyaan" value={{$pertanyaan->id}}>
                     <input hidden name="created_at" value="{{ \Carbon\Carbon::now() }}">
                     <input hidden name="updated_at" value="{{ \Carbon\Carbon::now() }}">
@@ -27,21 +43,25 @@
                 </div>
             </div>
             @foreach ($jawaban as $jawaban)
-            <div class="section-block " style ="position: relative; left:-410px" > 
-                <h2 class="section-title" >Jawaban
-                </h2>
-                
-                <div class="answer">{{$jawaban->jawaban}}</div>
-                <div class="section-title"></div>
-                <div class="answer">dijawab oleh: $user->nama</div>
-                <div style="position:relative; left:100px">
-                    <form action="/komentarjawaban/create" method="POST">
-                            @csrf
-                            <input type="text" class="form-control" style="width:200px; display:inline" name="komentar">
-                            <button class="btn btn-primary" style="padding:4px " > Komentar Jawaban </button>
-                            <input hidden name="id_tukangkomen" value={{$jawabans-> pertanyaan -> isi}}>
-
-                    </form>
+                <div class="section-block"> 
+                    <h2 class="question text"><i class=""></i> Jawaban</h2>
+                    <div class="answer">{{$jawaban -> jawaban}}</div>
+                    <div class="section-title"></div>
+                    <div class="answer mb-2">
+                        <ul class="list-inline float-left px-2">
+                            <li class="list-inline-item"><a href="#" class=""><i class="fa fa-user"></i> dijawab oleh : </a></li>
+                            <li class="list-inline-item"><a href="#" class=""><i class="fa fa-comment"></i> beri komentar</a></li>
+                        </ul>
+                                                
+                        <ul class="list-inline float-right px-2">
+                            <li class="list-inline-item">Vote :{{$jawaban->votes}} </a></li>
+                            <li class="list-inline-item"><a href="#" class=""><i class="fa fa-thumbs-up"></i> vote up</a></li>
+                            <li class="list-inline-item"><a href="#" class=""><i class="fa fa-thumbs-down"></i> vote down</a></li>
+                        </ul>
+                    </div>
+                    <br>
+                    <h2 class="section-title"></h2>
+                    <span class="bg-info text-white-50">{{$jawaban->created_at}}</span>
                 </div>
                     
                     

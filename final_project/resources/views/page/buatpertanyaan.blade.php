@@ -26,7 +26,7 @@
                   <input type="text" class="form-control" name="tag" placeholder="Contoh: tag1, tag2, tag3">
                 </div>
               
-              <input hidden name="id_penulis" value=1>
+              <input hidden name="id_penanya" value={{ Auth::user()->id }}>
               
           </div>
             <div class="card-footer">

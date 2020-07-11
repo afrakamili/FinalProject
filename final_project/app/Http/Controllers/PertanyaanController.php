@@ -7,6 +7,8 @@ use App\Pertanyaan;
 use App\Tag;
 use App\User2;
 use App\Models\UserModel;
+use App\Jawaban;
+use App\Models\JawabanModel;
 
 class PertanyaanController extends Controller
 {
@@ -20,6 +22,9 @@ class PertanyaanController extends Controller
         //$user = User2::all();
         //$pertanyaan = Pertanyaan::find($id);
         $pertanyaan = Pertanyaan::all();
+        //dd ($pertanyaan);
+        //$pertanyaan = UserModel::get_pertanyaan();
+        //dd($pertanyaan);
         return view('page.daftarpertanyaan', compact('pertanyaan'));
     }
 
@@ -42,10 +47,13 @@ class PertanyaanController extends Controller
     public function store(Request $request)
     {
         //update reputasi user
+        $id = $request->id_penanya;
+        $update_reputasi = UserModel::update_reputasi($id);
         // $user = UserModel::update($request->id_penanya);
         $new_pertanyaan = Pertanyaan::create([
             "judul"=> $request["judul"],
             "isi"=> $request ["isi"],
+            "id_penanya"=>$request["id_penanya"],
 
         ]);
         //tags
@@ -74,7 +82,11 @@ class PertanyaanController extends Controller
      */
     public function show($id)
     {
-        //
+        $pertanyaan = Pertanyaan::find($id);
+        $jawaban = JawabanModel::find_by_pertanyaan_id($id);
+        $jawabans = Jawaban::where('id_pertanyaan', $id);
+        // dd($jawabans);
+        return view('page.tanyajawab', compact('pertanyaan','jawaban'));
     }
 
     /**

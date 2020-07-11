@@ -12,6 +12,6 @@ class Jawaban extends Model
     protected $guarded=[];
 
     public function user(){
-        return $this->belongsTo('App\User2');
+        return $this->belongsTo('App\User2' , 'id_penjawab');
     }
 }
