@@ -13,7 +13,7 @@
        </form>
     </div>
     <div class="container">
-        <h2 class="title">Malu Bertanya Sesat dijalan</h2>
+        <h2 class="title">Malu Bertanya Sesat dijalan </h2>
         <div class="intro">
             <p>Silahkan menjawab, karena jawaban anda mungkin solusi buat orang lain</p>
             <div class="cta-container">
@@ -30,7 +30,7 @@
                     <div class="card-body">
                     <p class="intro" >{{$pertanyaan->isi}}</p>
                         <a class="link" href="#"><span></span></a>
-                        <span>Diajukan oleh Maulaya</span>
+                    <span>Diajukan oleh {{$pertanyaan -> user -> name}}</span>
                     </div>
                     <div class="card-footer bg-transparent">
                         Dipost 9 Juli 2020 16:00

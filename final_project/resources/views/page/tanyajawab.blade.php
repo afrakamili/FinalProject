@@ -27,22 +27,25 @@
                 </div>
             </div>
             @foreach ($jawaban as $jawaban)
-                <div class="section-block"> 
-                    <h2 class="question text"><i class=""></i> Jawaban</h2>
-                    <div class="answer">{{$jawaban->jawaban}}</div>
-                    <div class="section-title"></div>
-                    <div class="answer">dijawab oleh: $user->nama</div>
-                    <div>
-                        <form action="/komentar/create" method="POST">
+            <div class="section-block " style ="position: relative; left:-410px" > 
+                <h2 class="section-title" >Jawaban
+                </h2>
+                
+                <div class="answer">{{$jawaban->jawaban}}</div>
+                <div class="section-title"></div>
+                <div class="answer">dijawab oleh: $user->nama</div>
+                <div style="position:relative; left:100px">
+                    <form action="/komentarjawaban/create" method="POST">
                             @csrf
-                            <input type="text" class="form-control" style="width:200px">
-                            <button class="btn btn-primary" style="padding:4px display:inline" > Komentar Jawaban </button>
+                            <input type="text" class="form-control" style="width:200px; display:inline" name="komentar">
+                            <button class="btn btn-primary" style="padding:4px " > Komentar Jawaban </button>
+                            <input hidden name="id_tukangkomen" value={{$jawabans-> pertanyaan -> isi}}>
 
-                        </form>
-                    </div>
-                    
-                    
+                    </form>
                 </div>
+                    
+                    
+            </div>    
             @endforeach
             
             

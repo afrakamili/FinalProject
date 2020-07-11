@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\JawabanModel;
 use App\Jawaban;
 use App\Pertanyaan;
+use App\User2;
 
 class JawabanController extends Controller
 {
@@ -17,12 +18,14 @@ class JawabanController extends Controller
     public function index($id)
     {
         $jawaban = JawabanModel::find_by_pertanyaan_id($id);
+        $jawabans = Jawaban::all();
         $pertanyaan = Pertanyaan::find($id);
+        
         
 
         //$pertanyaan = Pertanyaan::find($id);
         
-        return view('page.tanyajawab', compact('jawaban', 'pertanyaan'));
+        return view('page.tanyajawab', compact('jawaban', 'pertanyaan', 'jawabans'));
     }
 
     /**

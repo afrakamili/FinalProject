@@ -10,4 +10,8 @@ class Jawaban extends Model
         return $this->belongsTo('App\Pertanyaan');
     }
     protected $guarded=[];
+
+    public function user(){
+        return $this->belongsTo('App\User2');
+    }
 }

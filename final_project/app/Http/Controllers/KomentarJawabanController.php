@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\KomentarJawaban;
+use App\Pertanyaan;
 
 class KomentarJawabanController extends Controller
 {
@@ -16,10 +17,11 @@ class KomentarJawabanController extends Controller
         //return view ('page.')
     }
 
-    public function store(){
+    public function store(Request $request){
+        dd ($request);
         $new_komentar = KomentarJawaban::create([
             "komentar"=> $request ["komentar"],
-            "id_tukangkomen" => $request ["id_tukangkomen"],
+            // "id_tukangkomen" => $request ["id_tukangkomen"],
         ]);
         return redirect('/pertanyaan');
     }

@@ -17,9 +17,9 @@ class PertanyaanController extends Controller
      */
     public function index()
     {
+        //$user = User2::all();
         //$pertanyaan = Pertanyaan::find($id);
         $pertanyaan = Pertanyaan::all();
-        
         return view('page.daftarpertanyaan', compact('pertanyaan'));
     }
 
