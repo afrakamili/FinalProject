@@ -13,7 +13,7 @@
        </form>
     </div>
     <div class="container">
-        <h2 class="title">Malu Bertanya Sesat dijalan </h2>
+        <h2 class="title">Malu Bertanya Sesat dijalan</h2>
         <div class="intro">
             <p>Silahkan menjawab, karena jawaban anda mungkin solusi buat orang lain</p>
             <div class="cta-container">
@@ -22,34 +22,32 @@
         </div><!--//intro-->
         <div class="cards-wrapper row">
             @foreach ($pertanyaan as $pertanyaan)
-            <div class="item col-lg-4 col-4">
-                <div class="card border-success mb-3"> 
-                    <div class="card-header bg-transparent text-info">
-                    
-                    <h3 class="title"><a class=" text-decoration-none" href="{{url('/jawaban/'.$pertanyaan->id)}}" data-size="large" >{{$pertanyaan->judul}}</a> </h3>
+            <div class="item item-green col-lg-4 col-4">
+                <div class="item"> 
+                    <div class="card-header bg-transparent">
+                    <h3 class="title">{{$pertanyaan->judul}} </h3>
                     </div>
-                    <div class="card-body text-success">
+                    <div class="card-body">
                     <p class="intro" >{{$pertanyaan->isi}}</p>
-                    
-                    <span>Diajukan oleh: {{$pertanyaan -> user -> name }}</span>
-                    {{-- <span>Diajukan oleh {{ $pertanyaan->id_penanya }}</span> --}}
+                        <a class="link" href="#"><span></span></a>
+                        <span>Diajukan oleh {{ $pertanyaan->id_penanya }}</span>
                     </div>
                     <div class="card-footer bg-transparent">
                        Dibuat : {{$pertanyaan->created_at}}
-                    {{-- <div class="btn-group-sm"> 
+                    <div class="btn-group-sm"> 
                         <a class="btn-orange" href="{{url('/jawaban/'.$pertanyaan->id)}}" data-size="large" >Lihat</a>
                         <a class="btn-orange" href="{{url('/pertanyaan/'.$pertanyaan->id) . '/edit' }}" data-size="large" >Edit</a> </div> 
                         <form action="{{url('/pertanyaan/'. $pertanyaan->id)}}" style="display:inline" method="post">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
-                        </form> --}}
+                        </form>
+                    </div>
                     
-                    <br>
                     @foreach ($pertanyaan->tags as $tag)
                          <button class="btn btn-warning btn-sm">{{$tag->tag_name}}</button>
                     @endforeach
-                    </div>
+                    
                 </div>
 
             </div><!--//item-->
