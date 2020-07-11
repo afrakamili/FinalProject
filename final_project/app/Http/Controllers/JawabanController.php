@@ -46,13 +46,14 @@ class JawabanController extends Controller
     {
         //update reputasi
         $id = $request->id_penjawab;
+        $idpertanyaan = $request->id_pertanyaan;
         $update_reputasi = UserModel::update_reputasi2($id);
         $new_jawaban = Jawaban::create([
             "jawaban"=> $request ["jawaban"],
             "id_pertanyaan" => $request ["id_pertanyaan"],
             "id_penjawab" => $request ["id_penjawab"],
         ]);
-        return redirect('/pertanyaan');
+        return redirect('/jawaban/'.$idpertanyaan);
     }
 
     /**

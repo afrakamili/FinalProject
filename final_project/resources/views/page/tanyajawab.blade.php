@@ -5,12 +5,20 @@
 <section class="cards-section text-center">
    
     <div class="container">
-         
+        <a class="btn btn-outline-success" href="{{ url('/pertanyaan') }}">Back to Forum</a>
         <section class="doc-section text-left">
+            <div class="btn-group-sm float-right px-2">
+                <a class="btn btn-sm btn-warning" href="{{url('/pertanyaan/'.$pertanyaan->id) . '/edit' }}" data-size="large" >Edit</a> 
+                <form action="{{url('/pertanyaan/'. $pertanyaan->id)}}" style="display:inline" method="post">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+                </form>
+            </div>
             <h2 class="section-title">Pertanyaan
             </h2>
-           
-            <div class="section-block">
+            <div class="section-block"></div>
+            
                 <h3 class="question text"><i class="fas fa-question-circle"></i> {{$pertanyaan->isi}}</h3>
                 <div class="answer mb-3"> 
                     <ul class="list-inline float-left px-2">
@@ -41,10 +49,10 @@
                     <input hidden name="updated_at" value="{{ \Carbon\Carbon::now() }}">
                  </form>
                 </div>
-            </div>
+          
             @foreach ($jawaban as $jawaban)
-                <div class="section-block"> 
-                    <h2 class="question text"><i class=""></i> Jawaban</h2>
+                 <div class="section-block"></div>
+                    <h2 class="question text"><i class=""></i> Jawaban </h2>
                     <div class="answer">{{$jawaban->jawaban}}</div>
                     <div class="section-title"></div>
                     <div class="answer mb-2">
@@ -62,7 +70,7 @@
                     <br>
                     <h2 class="section-title"></h2>
                     <span class="bg-info text-white-50">{{$jawaban->created_at}}</span>
-                </div>
+                
             @endforeach
             
             
