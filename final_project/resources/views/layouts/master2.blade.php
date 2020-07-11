@@ -19,10 +19,13 @@
     <!-- Plugins CSS -->    
     <link rel="stylesheet" href="{{ asset ('/assets/plugins/elegant_font/css/style.css') }}">    
     <!-- Theme CSS -->
+    
+    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+
     <link id="theme-style" rel="stylesheet" href="{{ asset ('/assets/css/styles.css') }}">
 
     <script src="{{ asset('/js/app.js') }}" defer></script>
-
+    <!-- Collapsible Form -->
     <!-- Fonts -->
     <!-- Styles -->
     <link href="{{ asset('/css/app.css') }}" rel="stylesheet">

@@ -3,14 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\KomentarJawaban;
+use App\KomentarPertanyaan;
 use App\Pertanyaan;
+use App\Jawaban;
 
-class KomentarJawabanController extends Controller
+
+class KomentarPertanyaanController extends Controller
 {
     //
     public function create(){
-        return view('page.buatkomentar');
+        return view();
     }
 
     public function index(){
@@ -19,12 +21,11 @@ class KomentarJawabanController extends Controller
 
     public function store(Request $request){
         //dd ($request);
-        $new_komentar = KomentarJawaban::create([
+        $new_komentar = KomentarPertanyaan::create([
             "komentar"=> $request ["komentar"],
             "id_tukangkomen" => $request ["id_tukangkomen"],
-            "id_jawaban" => $request ["id_jawaban"]
+            "id_pertanyaan" => $request ["id_pertanyaan"]
         ]);
         return redirect('/pertanyaan');
     }
-    
 }

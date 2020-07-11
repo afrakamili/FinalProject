@@ -8,6 +8,7 @@ use App\Tag;
 use App\User2;
 use App\Models\UserModel;
 use App\Jawaban;
+use App\KomentarJawaban;
 use App\Models\JawabanModel;
 use App\Models\PertanyaanModel;
 
@@ -86,8 +87,10 @@ class PertanyaanController extends Controller
         $pertanyaan = Pertanyaan::find($id);
         $jawaban = JawabanModel::find_by_pertanyaan_id($id);
         $jawabans = Jawaban::where('id_pertanyaan', $id);
-        // dd($jawabans);
-        return view('page.tanyajawab', compact('pertanyaan','jawaban'));
+        $komentar = KomentarJawaban::where('id_jawaban',$id);
+        //dd($jawabans);
+        dd($komentar);
+        return view('page.tanyajawab', compact('pertanyaan','jawaban','komentar'));
     }
 
     /**

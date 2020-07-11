@@ -19,8 +19,8 @@ Route::get('/', function () {
 Route::resource('pertanyaan', 'PertanyaanController')->middleware('auth');
 Route::get('/jawaban/{id_pertanyaan}', 'JawabanController@index')->middleware('auth');
 Route::post('/jawaban', 'JawabanController@store');
-ROute::post('/komentarjawaban/create', 'KomentarJawabanController@store');
-Route::resource('komentarjawaban','KomentarJawabanController');
+Route::post('/komentarjawaban/create', 'KomentarJawabanController@store');
+Route::resource('komentarjawaban','KomentarJawabanController')->middleware('auth');
 
 //Route::get('/listjawaban/{id_pertanyaan}', 'JawabanController@index');
 //Route Coba FrontEND FInal Project

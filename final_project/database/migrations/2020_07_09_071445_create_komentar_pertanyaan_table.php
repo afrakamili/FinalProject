@@ -20,6 +20,9 @@ class CreateKomentarPertanyaanTable extends Migration
             $table->bigInteger('id_tukangkomen')->unsigned()->nullable();
             $table->foreign('id_tukangkomen')->references ('id')->on ('users') ->onDelete('cascade');
 
+            $table->bigInteger('id_pertanyaan')->unsigned()->nullable();
+            $table->foreign('id_pertanyaan')->references ('id')->on ('pertanyaans') ->onDelete('cascade');
+            
             $table->timestamps();
         });
     }
