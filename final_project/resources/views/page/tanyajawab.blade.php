@@ -19,7 +19,7 @@
                     <div class="answer text-right"> <button class="btn btn-danger btn-cta" type="submit"> Bantu Jawab</button></div>
                     <div class="section-title"></div>
                     <textarea class="form-control" rows="5" name="jawaban" placeholder="Enter ..."></textarea>
-                    <input hidden name="id_penjawab" value=1 >
+                    <input hidden name="id_penjawab" value={{ Auth::user()->id }}>
                     <input hidden name="id_pertanyaan" value={{$pertanyaan->id}}>
                     <input hidden name="created_at" value="{{ \Carbon\Carbon::now() }}">
                     <input hidden name="updated_at" value="{{ \Carbon\Carbon::now() }}">

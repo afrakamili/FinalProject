@@ -19,6 +19,7 @@ class PertanyaanController extends Controller
     {
         //$pertanyaan = Pertanyaan::find($id);
         $pertanyaan = Pertanyaan::all();
+        //$pertanyaan = UserModel::get_pertanyaan();
         //dd($pertanyaan);
         return view('page.daftarpertanyaan', compact('pertanyaan'));
     }
@@ -42,6 +43,8 @@ class PertanyaanController extends Controller
     public function store(Request $request)
     {
         //update reputasi user
+        $id = $request->id_penanya;
+        $update_reputasi = UserModel::update_reputasi($id);
         // $user = UserModel::update($request->id_penanya);
         $new_pertanyaan = Pertanyaan::create([
             "judul"=> $request["judul"],

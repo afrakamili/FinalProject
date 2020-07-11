@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Pertanyaan extends Model
 {
+    protected $table = "pertanyaans";
     protected $guarded = [];
 
     public function tags(){
@@ -13,6 +14,6 @@ class Pertanyaan extends Model
     }
 
     public function id_penanya(){
-        return $this->belongsTo('App\User2','id');
+        return $this->belongsTo('App\User2');
     }
 }
