@@ -18,18 +18,18 @@ class JawabanController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index($id)
-    {
+    {  
         $jawaban = Jawaban::where('id_pertanyaan', '=', $id)->get();
-        $jawabans = Jawaban::all();
         $pertanyaan = Pertanyaan::find($id);
         $komentar_pertanyaan = KomentarPertanyaan::where('id_pertanyaan', '=', $id)->get();
         
-        
+    
+       
         
 
         //$pertanyaan = Pertanyaan::find($id);
         
-        return view('page.tanyajawab', compact('jawaban', 'pertanyaan', 'jawabans', 'komentar_pertanyaan'));
+        return view('page.tanyajawab', compact('jawaban', 'pertanyaan', 'komentar_pertanyaan'));
     }
 
     /**
@@ -59,6 +59,7 @@ class JawabanController extends Controller
             "id_pertanyaan" => $request ["id_pertanyaan"],
             "id_penjawab" => $request ["id_penjawab"],
         ]);
+        
         return redirect('/jawaban/'.$idpertanyaan);
     }
 
@@ -91,9 +92,13 @@ class JawabanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
+    public function updatevotes($id)
+    {   
+        
+        $jawabanterbaik = JawabanModel::update_votes($id);
+        
+
+        return redirect('/pertanyaan');
     }
 
     /**

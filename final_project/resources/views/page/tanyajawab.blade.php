@@ -1,7 +1,6 @@
 @extends('layouts.master1')
 
 @section('content')
-
 <section class="cards-section text-center">
    
     <div class="container">
@@ -17,6 +16,7 @@
                 </form>
             </div>
             @endif
+            
             <h2 class="section-title">Pertanyaan
             </h2>
             <div class="section-block"></div>
@@ -50,6 +50,7 @@
                         </li>
                      </ul>
                 </div>
+                
                 <br>
                 <h2 class="section-title"></h2>
                 <span class="bg-secondary text-white-50">{{$pertanyaan->created_at}}</span>
@@ -92,6 +93,7 @@
                 </div>
           
                 @foreach ($jawaban as $jawaban)
+                
                 <div class="section-block"></div>
                     <h2 class="question text"><i class=""></i> Jawaban </h2>
                     <div class="answer">{{$jawaban->jawaban}}</div>
@@ -100,8 +102,7 @@
                         <ul class="list-inline float-left px-2">
                             <li class="list-inline-item"><a href="#" class=""><i class="fa fa-user"></i> dijawab oleh : {{$jawaban-> user -> name}}</a></li>
                             <li class="list-inline-item"><a href="#"  data-toggle="modal" data-target="#onkomentarjawaban" class=""><i class="fa fa-comment"></i> beri komentar</a></li>
-                        </ul>
-                         
+                        </ul>                         
                         
 
                         <ul class="list-inline float-right px-2">
@@ -129,8 +130,21 @@
                     <br>
                     <h2 class="section-title"></h2>
                     <span class="bg-info text-white-50">{{$jawaban->created_at}}</span>
+                    
+                    
+                    
                     @if ( Auth::user()->id == $pertanyaan->id_penanya )
-                    <a href="#" class=" float-right inline">jadikan jawaban terbaik <i class="fa fa-star"></i></a>
+                      @if ($jawaban->votes == 1)
+                      <p style=" float-right inline"> <i class="fa fa-star " style="color:yellow"></i> jawaban terbaik </p>
+                      @else
+                      {{-- <form action="/jawabanterbaik">
+                        @csrf
+                        <input hidden name="jawabanterbaik" value =1>
+                        <button class= "btn btn-primary" style="background:none; border:none; padding:0px"><i class="fa fa-star" style="color:blue"> </i> = </button> <span> pilih jawaban terbaik</span>
+                        
+                      </form> --}}
+                      <a href="{{url('/jawabanterbaik/' . $jawaban->id)}}" class=" float-right inline">jadikan jawaban terbaik <i class="fa fa-star" ></i></a>
+                      @endif
                     @endif
                     <br>
                     @foreach ($jawaban -> komentar as $komentar)

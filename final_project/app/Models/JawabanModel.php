@@ -19,6 +19,7 @@ class JawabanModel{
       $updatevotes = DB::update('update jawabans set votes ='. $tambahvotes .' where id = ?', [$id]);
       return $updatevotes;
     } 
+
     public static function update_vote1($id){
       $data = DB::table('jawabans')
                       ->where('id',$id)
@@ -27,6 +28,17 @@ class JawabanModel{
       $tambahvotes = $votesawal-1;
       $updatevotes = DB::update('update jawabans set votes ='. $tambahvotes .' where id = ?', [$id]);
       return $updatevotes;
+      }
+    
+      public static function update_votes($id){
+      $jawabanterbaik = DB::table('jawabans')
+                      ->where('id',$id)
+                      ->update ([
+                         "votes" => 1
+                      ]);
+      return $jawabanterbaik;
+    }
+  
+
 
     }
-}

@@ -57,3 +57,5 @@ Route::post('/voteup/pertanyaan', 'VoteController@voteuppertanyaan');
 Route::post('/votedown/pertanyaan', 'VoteController@votedownpertanyaan');
 
 Route::get('/userprofil/{id_user}', 'HomeController@user');
+//--jawaban terbaik--
+Route::get('/jawabanterbaik/{id}', 'JawabanController@updatevotes');
