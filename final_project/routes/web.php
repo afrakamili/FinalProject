@@ -55,3 +55,6 @@ Route::post('/votedown/jawaban', 'VoteController@votedownjawaban');
 //---vote pertanyaan---
 Route::post('/voteup/pertanyaan', 'VoteController@voteuppertanyaan');
 Route::post('/votedown/pertanyaan', 'VoteController@votedownpertanyaan');
+
+//--jawaban terbaik--
+Route::get('/jawabanterbaik/{id}', 'JawabanController@updatevotes');

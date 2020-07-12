@@ -9,5 +9,16 @@ class JawabanModel{
       return $jawaban;
     }
 
+    public static function update_votes($id){
+      $jawabanterbaik = DB::table('jawabans')
+                      ->where('id',$id)
+                      ->update ([
+                         "votes" => 1
+                      ]);
+      
+      return $jawabanterbaik;
+    }
+  
+
 
 }

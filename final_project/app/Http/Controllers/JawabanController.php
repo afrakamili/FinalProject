@@ -26,6 +26,7 @@ class JawabanController extends Controller
         
         
         
+        
 
         //$pertanyaan = Pertanyaan::find($id);
         
@@ -59,6 +60,7 @@ class JawabanController extends Controller
             "id_pertanyaan" => $request ["id_pertanyaan"],
             "id_penjawab" => $request ["id_penjawab"],
         ]);
+        
         return redirect('/jawaban/'.$idpertanyaan);
     }
 
@@ -91,9 +93,13 @@ class JawabanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
+    public function updatevotes($id)
+    {   
+        
+        $jawabanterbaik = JawabanModel::update_votes($id);
+        
+
+        return redirect('/pertanyaan');
     }
 
     /**

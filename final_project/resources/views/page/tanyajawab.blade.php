@@ -127,7 +127,19 @@
                     <br>
                     <h2 class="section-title"></h2>
                     <span class="bg-info text-white-50">{{$jawaban->created_at}}</span>
-                    <a href="#" class=" float-right inline">jadikan jawaban terbaik <i class="fa fa-star"></i></a>
+                    @if ($jawaban->votes == 1)
+                      <p style=" float-right inline"> <i class="fa fa-star " style="color:yellow"></i> jawaban terbaik </p>
+                    @else
+                      {{-- <form action="/jawabanterbaik">
+                        @csrf
+                        <input hidden name="jawabanterbaik" value =1>
+                        <button class= "btn btn-primary" style="background:none; border:none; padding:0px"><i class="fa fa-star" style="color:blue"> </i> = </button> <span> pilih jawaban terbaik</span>
+                        
+                      </form> --}}
+                      <a href="{{url('/jawabanterbaik/' . $jawaban->id)}}" class=" float-right inline">jadikan jawaban terbaik <i class="fa fa-star" ></i></a>
+                    @endif
+                    
+                    
                     <br>
                     @foreach ($jawaban -> komentar as $komentar)
                       <div class="answer text-left badge-secondary text-white">
