@@ -7,6 +7,7 @@
     <div class="container">
         <a class="btn btn-outline-success" href="{{ url('/pertanyaan') }}">Back to Forum</a>
         <section class="doc-section text-left">
+          @if ( Auth::user()->id == $pertanyaan->id_penanya )
             <div class="btn-group-sm float-right px-2">
                 <a class="btn btn-sm btn-warning" href="{{url('/pertanyaan/'.$pertanyaan->id) . '/edit' }}" data-size="large" >Edit</a> 
                 <form action="{{url('/pertanyaan/'. $pertanyaan->id)}}" style="display:inline" method="post">
@@ -15,6 +16,7 @@
                     <button type="submit" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
                 </form>
             </div>
+            @endif
             <h2 class="section-title">Pertanyaan
             </h2>
             <div class="section-block"></div>
@@ -90,7 +92,7 @@
                     <br>
                     <h2 class="section-title"></h2>
                     <span class="bg-info text-white-50">{{$jawaban->created_at}}</span>
-                
+                    <a href="#" class=" float-right inline">jadikan jawaban terbaik <i class="fa fa-star"></i></a>
                 @endforeach
             </div>  
         </div>    

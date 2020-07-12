@@ -89,7 +89,7 @@ class PertanyaanController extends Controller
         $jawabans = Jawaban::where('id_pertanyaan', $id);
         $komentar = KomentarJawaban::where('id_jawaban',$id);
         //dd($jawabans);
-        dd($komentar);
+        //dd($komentar);
         return view('page.tanyajawab', compact('pertanyaan','jawaban','komentar'));
     }
 
