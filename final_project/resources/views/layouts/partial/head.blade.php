@@ -39,7 +39,7 @@
                             @endif
                         @else
                             <li class="nav-item dropdown">
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="{{ url('/userprofil/'.Auth::user()->id) }}">
                                    Welcome, {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
                             </li>

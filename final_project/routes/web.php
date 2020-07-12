@@ -55,3 +55,5 @@ Route::post('/votedown/jawaban', 'VoteController@votedownjawaban');
 //---vote pertanyaan---
 Route::post('/voteup/pertanyaan', 'VoteController@voteuppertanyaan');
 Route::post('/votedown/pertanyaan', 'VoteController@votedownpertanyaan');
+
+Route::get('/userprofil/{id_user}', 'HomeController@user');

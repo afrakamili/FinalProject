@@ -98,14 +98,14 @@
                     <div class="section-title"></div>
                     <div class="answer mb-2">
                         <ul class="list-inline float-left px-2">
-                            <li class="list-inline-item"><a href="#" class=""><i class="fa fa-user"></i> dijawab oleh : </a></li>
+                            <li class="list-inline-item"><a href="#" class=""><i class="fa fa-user"></i> dijawab oleh : {{$jawaban-> user -> name}}</a></li>
                             <li class="list-inline-item"><a href="#"  data-toggle="modal" data-target="#onkomentarjawaban" class=""><i class="fa fa-comment"></i> beri komentar</a></li>
                         </ul>
                          
                         
 
                         <ul class="list-inline float-right px-2">
-                            <li class="list-inline-item">Vote : </li>
+                            <li class="list-inline-item">Vote : {{$jawaban->votes}} </li>
                             <li class="list-inline-item">
                                 <form action="/voteup/jawaban" style="display:inline" method="post">
                                 @csrf

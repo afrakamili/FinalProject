@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\VoteJawaban;
 use App\VotePertanyaan;
 use App\Models\UserModel;
+use App\Models\JawabanModel;
 
 class VoteController extends Controller
 {
@@ -47,7 +48,9 @@ class VoteController extends Controller
             "vote" => 1,
         ]);
         $id= $request->id_penjawab;
+        $id_jawaban = $request->jawaban_id;
         $update_reputasi = UserModel::update_reputasi4($id);
+        $update_votes = JawabanModel::update_vote($id_jawaban);
         $idpertanyaan = $request->id_pertanyaan;
         return redirect ('/jawaban/'.$idpertanyaan);
     }
@@ -60,7 +63,9 @@ class VoteController extends Controller
             "vote" => -1,
         ]);
         $id= $request->user_id;
+        $id_jawaban = $request->jawaban_id;
         $update_reputasi = UserModel::update_reputasi5($id);
+        $update_votes = JawabanModel::update_vote1($id_jawaban);
         $idpertanyaan = $request->id_pertanyaan;
         return redirect ('/jawaban/'.$idpertanyaan);
         

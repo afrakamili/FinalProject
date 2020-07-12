@@ -9,5 +9,24 @@ class JawabanModel{
       return $jawaban;
     }
 
+    public static function update_vote($id){
+      $data = DB::table('jawabans')
+                      ->where('id',$id)
+                      ->first();
+      $votesawal = $data->votes;
+      //dd($votesawal);
+      $tambahvotes = $votesawal+1;
+      $updatevotes = DB::update('update jawabans set votes ='. $tambahvotes .' where id = ?', [$id]);
+      return $updatevotes;
+    } 
+    public static function update_vote1($id){
+      $data = DB::table('jawabans')
+                      ->where('id',$id)
+                      ->first();
+      $votesawal = $data->votes;
+      $tambahvotes = $votesawal-1;
+      $updatevotes = DB::update('update jawabans set votes ='. $tambahvotes .' where id = ?', [$id]);
+      return $updatevotes;
 
+    }
 }
