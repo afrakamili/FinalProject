@@ -65,7 +65,7 @@
                   <div id="demo" class="collapse">
                    <form method="POST" action="{{ url('/komentarpertanyaan/create') }}">
                     @csrf
-                    <textarea class="col-lg-6" name="komentar" rows="2" placeholder="Isi komentar yg postif"></textarea>
+                    <textarea class="col-lg-6" name="komentar" rows="2" placeholder="Isi komentar yg postif" required="true"></textarea>
                     <input hidden name="id_tukangkomen" value={{ Auth::user()->id }}>
                     <input hidden name="id_pertanyaan" value={{$pertanyaan->id}}>
                     <input hidden name="created_at" value="{{ \Carbon\Carbon::now() }}">
@@ -83,7 +83,7 @@
                     @csrf
                     <div class="answer text-right"> <button class="btn btn-danger btn-cta" type="submit"> Bantu Jawab</button></div>
                     <div class="section-title"></div>
-                    <textarea class="form-control" rows="5" name="jawaban" placeholder="Enter ..."></textarea>
+                    <textarea class="form-control" rows="5" name="jawaban" placeholder="Enter ..." required="true"></textarea>
                     <input hidden name="id_penjawab" value={{ Auth::user()->id }}>
                     <input hidden name="id_pertanyaan" value={{$pertanyaan->id}}>
                     <input hidden name="created_at" value="{{ \Carbon\Carbon::now() }}">
@@ -110,6 +110,7 @@
                                 <form action="/voteup/jawaban" style="display:inline" method="post">
                                 @csrf
                                     <input hidden name="user_id" value = "{{Auth::user()->id}}">
+                                    <input hidden name="id_pertanyaan" value = "{{$pertanyaan->id}}">
                                     <input hidden name="jawaban_id" value = "{{$jawaban->id}}">
                                     <input hidden name="id_penjawab" value ="{{$jawaban ->id_penjawab}}">
                                     <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-thumbs-up"></i>vote up</button>
@@ -118,6 +119,7 @@
                                 <form action="/votedown/jawaban" style="display:inline" method="post">
                                     @csrf
                                         <input hidden name="user_id" value = "{{Auth::user()->id}}">
+                                        <input hidden name="id_pertanyaan" value = "{{$pertanyaan->id}}">
                                         <input hidden name="jawaban_id" value = "{{$jawaban->id}}">
                                         <input hidden name="id_penjawab" value ="{{$jawaban ->id_penjawab}}">
                                         <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-thumbs-down"></i> vote down</button>
@@ -165,9 +167,10 @@
           @csrf
           <div class="form-group">
             <label for="username"></label>
-              <input type="text" name="komentar" placeholder="Isi Komentar yang Positif" class="form-control">
+              <input type="text" name="komentar" placeholder="Isi Komentar yang Positif" class="form-control" required="true">
               <input hidden name="id_tukangkomen" value="{{ Auth::user()->id }}">
-              <input hidden name="id_jawaban" value="{{$pertanyaan->id}}">
+              <input hidden name="id_pertanyaan" value="{{$pertanyaan->id}}">
+              <input hidden name="id_jawaban" value="{{$jawaban->id}}">
               <input hidden name="created_at" value="{{ \Carbon\Carbon::now() }}">
               <input hidden name="updated_at" value="{{ \Carbon\Carbon::now() }}">
             <div class="text-right">

@@ -19,9 +19,9 @@ class VoteController extends Controller
             "vote" => 1,
         ]);
         $id= $request->id_penanya;
-        
+        $idpertanyaan = $request->pertanyaan_id;
         $update_reputasi = UserModel::update_reputasi4($id);
-        return redirect ('/pertanyaan');
+        return redirect ('/jawaban/'.$idpertanyaan);
     }
 
     public function votedownpertanyaan(Request $request){
@@ -33,8 +33,8 @@ class VoteController extends Controller
         ]);
         $id= $request->user_id;
         $update_reputasi = UserModel::update_reputasi5($id);
-
-        return redirect ('/pertanyaan');
+        $idpertanyaan = $request->pertanyaan_id;
+        return redirect ('/jawaban/'.$idpertanyaan);
         
     }
 
@@ -47,9 +47,9 @@ class VoteController extends Controller
             "vote" => 1,
         ]);
         $id= $request->id_penjawab;
-        
         $update_reputasi = UserModel::update_reputasi4($id);
-        return redirect ('/pertanyaan');
+        $idpertanyaan = $request->id_pertanyaan;
+        return redirect ('/jawaban/'.$idpertanyaan);
     }
 
     public function votedownjawaban(Request $request){
@@ -61,8 +61,8 @@ class VoteController extends Controller
         ]);
         $id= $request->user_id;
         $update_reputasi = UserModel::update_reputasi5($id);
-
-        return redirect ('/pertanyaan');
+        $idpertanyaan = $request->id_pertanyaan;
+        return redirect ('/jawaban/'.$idpertanyaan);
         
     }
 

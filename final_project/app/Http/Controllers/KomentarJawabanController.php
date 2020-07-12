@@ -20,6 +20,7 @@ class KomentarJawabanController extends Controller
     public function store(Request $request){
         // dd ('masuk');
         // dd($request->id_jawaban);
+        $idpertanyaan = $request->id_pertanyaan;
         $new_komentar = KomentarJawaban::create([
             "komentar"=> $request ["komentar"],
             "id_tukangkomen" => $request ["id_tukangkomen"],
@@ -27,7 +28,7 @@ class KomentarJawabanController extends Controller
         ]);
 
         
-        return redirect('/pertanyaan');
+        return redirect('/jawaban/'.$idpertanyaan);
     }
     
 }
