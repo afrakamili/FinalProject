@@ -18,19 +18,18 @@ class JawabanController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index($id)
-    {
+    {  
         $jawaban = Jawaban::where('id_pertanyaan', '=', $id)->get();
-        $jawabans = Jawaban::all();
         $pertanyaan = Pertanyaan::find($id);
         $komentar_pertanyaan = KomentarPertanyaan::where('id_pertanyaan', '=', $id)->get();
         
-        
-        
+    
+       
         
 
         //$pertanyaan = Pertanyaan::find($id);
         
-        return view('page.tanyajawab', compact('jawaban', 'pertanyaan', 'jawabans', 'komentar_pertanyaan'));
+        return view('page.tanyajawab', compact('jawaban', 'pertanyaan', 'komentar_pertanyaan'));
     }
 
     /**

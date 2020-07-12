@@ -15,11 +15,11 @@
           <div class="card-body bg-light">
               <div class="form-group">
                 <label >Judul Pertanyaan</label>
-              <input type="text" class="form-control" name="judul" placeholder=" Judul" value="{{$pertanyaan->judul}}">
+              <input type="text" class="form-control" name="judul" placeholder=" Judul" value="{{$pertanyaan->judul}}" required="true">
               </div>
               <div class="form-group">
                 <label >Isi Pertanyaan</label>
-                <textarea class="form-control" rows="5" name="isi" placeholder="{{$pertanyaan->isi}}" ></textarea>
+                <textarea class="form-control" rows="5" name="isi" placeholder="{{$pertanyaan->isi}}" required="true"></textarea>
               </div>
               
                 <div class="form-group">
