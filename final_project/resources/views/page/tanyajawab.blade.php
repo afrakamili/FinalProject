@@ -127,7 +127,9 @@
                     <br>
                     <h2 class="section-title"></h2>
                     <span class="bg-info text-white-50">{{$jawaban->created_at}}</span>
+                    @if ( Auth::user()->id == $pertanyaan->id_penanya )
                     <a href="#" class=" float-right inline">jadikan jawaban terbaik <i class="fa fa-star"></i></a>
+                    @endif
                     <br>
                     @foreach ($jawaban -> komentar as $komentar)
                       <div class="answer text-left badge-secondary text-white">
