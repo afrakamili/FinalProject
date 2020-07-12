@@ -8,6 +8,7 @@ use App\Models\UserModel;
 use App\Jawaban;
 use App\Pertanyaan;
 use App\User2;
+use App\KomentarPertanyaan;
 
 class JawabanController extends Controller
 {
@@ -18,15 +19,17 @@ class JawabanController extends Controller
      */
     public function index($id)
     {
-        $jawaban = JawabanModel::find_by_pertanyaan_id($id);
+        $jawaban = Jawaban::where('id_pertanyaan', '=', $id)->get();
         $jawabans = Jawaban::all();
         $pertanyaan = Pertanyaan::find($id);
+        $komentar_pertanyaan = KomentarPertanyaan::where('id_pertanyaan', '=', $id)->get();
+        
         
         
 
         //$pertanyaan = Pertanyaan::find($id);
         
-        return view('page.tanyajawab', compact('jawaban', 'pertanyaan', 'jawabans'));
+        return view('page.tanyajawab', compact('jawaban', 'pertanyaan', 'jawabans', 'komentar_pertanyaan'));
     }
 
     /**

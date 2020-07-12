@@ -48,3 +48,10 @@ Route::get('/home', 'HomeController@index')->name('home');
 // Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
 //     \UniSharp\LaravelFilemanager\Lfm::routes();
 // });
+//--- vote jawaban ----
+Route::post('/voteup/jawaban', 'VoteController@voteupjawaban');
+Route::post('/votedown/jawaban', 'VoteController@votedownjawaban');
+
+//---vote pertanyaan---
+Route::post('/voteup/pertanyaan', 'VoteController@voteuppertanyaan');
+Route::post('/votedown/pertanyaan', 'VoteController@votedownpertanyaan');

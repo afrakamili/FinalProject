@@ -57,4 +57,24 @@ class UserModel{
     $updaterepu = DB::update('update users set reputasi ='. $tambahrepu .' where id = ?', [$id]);
     return $updaterepu;
   }
+
+  public static function update_reputasi4($id){
+    $data = DB::table('users')
+                    ->where('id',$id)
+                    ->first();
+    $repuawal = $data->reputasi;
+    $tambahrepu = $repuawal+10;
+    $updaterepu = DB::update('update users set reputasi ='. $tambahrepu .' where id = ?', [$id]);
+    return $updaterepu;
+  }
+
+  public static function update_reputasi5($id){
+    $data = DB::table('users')
+                    ->where('id',$id)
+                    ->first();
+    $repuawal = $data->reputasi;
+    $tambahrepu = $repuawal-1;
+    $updaterepu = DB::update('update users set reputasi ='. $tambahrepu .' where id = ?', [$id]);
+    return $updaterepu;
+  }
 }
