@@ -47,3 +47,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 // Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
 //     \UniSharp\LaravelFilemanager\Lfm::routes();
 // });
+
+Route::post('/voteup/jawaban', 'VoteController@voteupjawaban');
+Route::post('/votedown/jawaban', 'VoteController@votedownjawaban');

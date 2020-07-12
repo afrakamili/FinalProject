@@ -60,11 +60,28 @@
                             <li class="list-inline-item"><a href="#" class=""><i class="fa fa-user"></i> dijawab oleh : </a></li>
                             <li class="list-inline-item"><a href="#" class=""><i class="fa fa-comment"></i> beri komentar</a></li>
                         </ul>
-                                                
+                         
+                        
+
                         <ul class="list-inline float-right px-2">
                             <li class="list-inline-item">Vote :{{$jawaban->votes}} </a></li>
-                            <li class="list-inline-item"><a href="#" class=""><i class="fa fa-thumbs-up"></i> vote up</a></li>
-                            <li class="list-inline-item"><a href="#" class=""><i class="fa fa-thumbs-down"></i> vote down</a></li>
+                            <li class="list-inline-item">
+                                <form action="/voteup/jawaban" style="display:inline" method="post">
+                                @csrf
+                                    <input hidden name="user_id" value = "{{Auth::user()->id}}">
+                                    <input hidden name="jawaban_id" value = "{{$jawaban->id}}">
+                                    <input hidden name="id_penjawab" value ="{{$jawaban ->id_penjawab}}">
+                                    <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-thumbs-up"></i>vote up</button>
+                                </form> </li>
+                            <li class="list-inline-item">
+                                <form action="/votedown/jawaban" style="display:inline" method="post">
+                                    @csrf
+                                        <input hidden name="user_id" value = "{{Auth::user()->id}}">
+                                        <input hidden name="jawaban_id" value = "{{$jawaban->id}}">
+                                        <input hidden name="id_penjawab" value ="{{$jawaban ->id_penjawab}}">
+                                        <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-thumbs-down"></i> vote down</button>
+                                    </form> </li>
+                            </li>
                         </ul>
                     </div>
                     <br>
