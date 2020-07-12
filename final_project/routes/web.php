@@ -20,6 +20,7 @@ Route::resource('pertanyaan', 'PertanyaanController')->middleware('auth');
 Route::get('/jawaban/{id_pertanyaan}', 'JawabanController@index')->middleware('auth');
 Route::post('/jawaban', 'JawabanController@store');
 Route::post('/komentarjawaban/create', 'KomentarJawabanController@store');
+Route::post('/komentarpertanyaan/create', 'KomentarPertanyaanController@store');
 Route::resource('komentarjawaban','KomentarJawabanController')->middleware('auth');
 
 //Route::get('/listjawaban/{id_pertanyaan}', 'JawabanController@index');

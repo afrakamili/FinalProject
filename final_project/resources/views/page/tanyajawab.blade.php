@@ -1,4 +1,4 @@
-@extends('layouts.master2')
+@extends('layouts.master1')
 
 @section('content')
 
@@ -40,6 +40,20 @@
                 <div class="answer text-left badge-secondary text-white">
                     <p><i class=" fas fa-comment inline-block"></i>komentar disini. bla bla bla </p>
                 </div><!--//coment-->
+                <div class="answer mb-1 mt-1">
+                  <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#demo">Beri Komentar</button>
+                  <div id="demo" class="collapse">
+                   <form method="POST" action="{{ url('/komentarpertanyaan/create') }}">
+                    @csrf
+                    <textarea class="col-lg-6" name="komentar" rows="2" placeholder="Isi komentar yg postif"></textarea>
+                    <input hidden name="id_tukangkomen" value={{ Auth::user()->id }}>
+                    <input hidden name="id_pertanyaan" value={{$pertanyaan->id}}>
+                    <input hidden name="created_at" value="{{ \Carbon\Carbon::now() }}">
+                    <input hidden name="updated_at" value="{{ \Carbon\Carbon::now() }}">
+                    <button class="btn btn-info inline" type="submit">Submit</button>
+                  </form>
+                  </div>
+                </div>
                 <br>
                 <div class="answer mb-3 mt-3">
                 
